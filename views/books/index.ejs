@@ -9,18 +9,22 @@
 <body>
   <h1>Book List</h1>
   <a href="/books/new">Add a new book</a>
-  <% books.forEach(book =>{ %>
-    <ul>
-      <li>
-        <h2><%= book.name %>
-        -  
-        <%= book.read?'Read':'Not Read' %>
-        <form method="POST" action="/books/<%= book._id %>?_method=DELETE">
-          <button>Delete</button>
-        </form>
-        </h2>
-      </li>
-    </ul>
+  <% if(books.length !== 0) { %>
+    <% books.forEach(book =>{ %>
+      <ul>
+        <li>
+          <h2><%= book.name %>
+          -  
+          <%= book.read?'Read':'Not Read' %>
+          <form method="POST" action="/books/<%= book._id %>?_method=DELETE">
+            <button>Delete</button>
+          </form>
+          </h2>
+        </li>
+      </ul>
   <% }) %> 
+  <% } else { %> 
+    <h2>There are no books yet</h2>
+<% } %>
 </body>
 </html>
